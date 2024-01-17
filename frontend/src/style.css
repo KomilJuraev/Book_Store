@@ -1,0 +1,241 @@
+body {
+  cursor: pointer;
+  cursor: pointer;
+}
+
+/* Home */
+.book-list-prnt-div {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.book-list-hdr {
+  margin-bottom: 30px;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.book-table {
+  border-collapse: separate; 
+  border-spacing: 0;
+  border: 1px solid black; 
+  width: 100%;
+}
+
+.book-table-body tr {
+  border-top: 1px solid black;
+}
+
+.book-table th, .book-table td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+.action-icons {
+  margin: 5px;
+}
+
+.add-icons {
+  margin-left: 5px;
+  font-size: 20px;
+}
+
+.navigate-back {
+ font-size: 35px; 
+ margin-left: 20px;
+}
+
+/* Show Book */
+.book-info-hdr {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.book-info-hdr > h1 {
+  margin: 0px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.book-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.book-info-p {
+  display: inline-block;
+  margin: 8px;
+}
+
+.book-info-container {
+  margin-top: 150px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.each-book-info {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.each-book-info > label {
+ font-style: italic;
+ font-family: 'Courier New', Courier, monospace;
+ font-weight: bolder; 
+ font-size: 18px;
+}
+
+.each-book-info > p {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Create a book */
+.create-book-container {
+  height: 400px;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@500&family=Teko:wght@500&display=swap');
+.create-title {
+  margin-bottom: 20px; 
+  font-family: 'Teko', sans-serif;;
+}
+
+.create-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  font-family: 'Signika Negative', sans-serif;
+}
+
+/* Edit a book */
+.edit-book-title {
+  font-family: 'sans-serif';
+}
+
+/* Delete page */
+.delete-container {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.btns-container {
+  margin-top: 40px;
+}
+
+.yes-btn {
+  margin-right: 25px;
+  width: 120px;
+  
+}
+
+.no-btn {
+  margin-left: 25px;
+  width: 120px;
+}
+
+/* Main page */
+.main-page-parent-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.main-option-container {
+  border-style: solid;
+  border-color: rgb(218, 208, 208);
+  border-width: 1px;
+  border-radius: 20px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  width: 500px;
+  text-align: center;
+}
+
+#book-list-opt {
+  margin-right: 25px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@600&display=swap');
+.main-option-container > h2 {
+  font-size: 50px;
+  font-family: 'Tektur', sans-serif;
+}
+
+.main-option-container:hover {
+  background-color: rgb(252, 250, 247);
+}
+
+#book-card-opt {
+  margin-left: 25px;
+}
+
+/* Cards */
+.main-cards-container {
+  margin: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+}
+
+.each-card {
+ border-style: solid;
+ border-width: 1px;
+ border-radius: 10px;
+ border-color: rgb(176, 173, 173);
+ margin: 20px;
+ height: 220px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center; 
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;500&display=swap');
+.each-card {
+  background-color: rgb(249, 248, 247);
+}
+
+.each-card:hover {
+  background-color: rgb(220, 243, 234);
+}
+
+.each-card > h3 {
+  font-family: 'Heebo';
+}
+
+.card-info {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.card-info > p {
+  display: inline;
+  font-family: sans-serif;
+  margin-left: 5px;
+}
+
+.spinner-icon {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
