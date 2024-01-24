@@ -5,12 +5,3 @@
 
 # Ignore node_modules in both backend and frontend
 **/node_modules/
-
-# Untrack .env file
-git rm --cached backend/.env
-
-# Untrack node_modules in backend
-git rm --cached -r backend/node_modules/
-
-# Untrack node_modules in frontend
-git rm --cached -r frontend/node_modules/
