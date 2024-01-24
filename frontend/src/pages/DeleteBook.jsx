@@ -1,26 +1,15 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import NavigateBack from "../components/NavigateBack";
+import { deleteABook } from "../services/api";
 
 function DeleteBook() {
     const { id } = useParams();
     const navigate = useNavigate();
 
     function handleDelete() {
-        fetch(`http://localhost:5555/books/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            navigate('/books');
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        deleteABook(id);
+        navigate('/books');
     }
 
     function goBack() {

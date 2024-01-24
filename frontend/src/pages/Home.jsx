@@ -4,26 +4,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo, faPenToSquare, faTrashCan, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 import NavigateBack from '../components/NavigateBack';
 import Spinner from '../components/Spinner';
+import { fetchAllTheBooks } from '../services/api';
 
 const Home = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(true);
-        fetch('http://localhost:5555/books')
-        .then((res) => res.json())
-        .then((data) => {
-            const returnedData = data.data;
-            setBooks(returnedData);
+        const fetchData = async () => {
+            setLoading(true);
+            const data = await fetchAllTheBooks();
+            setBooks(data);
             setTimeout(() => {
                 setLoading(false);
             }, 1000)
-        })
-        .catch((err) => {
-            console.log(err);
-            setLoading(false);
-        })
+        }
+        fetchData();
     }, []);
 
     return (
@@ -43,7 +39,7 @@ const Home = () => {
                     </thead>
                     <tbody className='book-table-body'>
                         { loading ? ( <Spinner /> )
-                            : (
+                            : books.length > 0 ? (
                             books.map((book) =>(
                             <tr key={book._id}>
                                 <td>
@@ -65,8 +61,12 @@ const Home = () => {
                                 </td>
                             </tr>                        
                             ))
-                            )
-                        }
+                            ) : (
+                                <tr>
+                                <td colSpan="5" className='no-books'>
+                                  <p>No Books Available</p>
+                                </td>
+                              </tr>                                                      )}
                     </tbody>
                 </table>
             </div>

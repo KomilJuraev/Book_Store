@@ -3,6 +3,7 @@ import '../style.css';
 import NavigateBack from "../components/NavigateBack";
 import { useNavigate } from "react-router-dom";
 import InputForm from "../components/InputForm";
+import { postNewBook } from "../services/api";
 
 const CreateBook = () => {
     const navigate = useNavigate();
@@ -14,7 +15,6 @@ const CreateBook = () => {
 
     function handleSubmit(e) {
         e.preventDefault(); // Add this line
-
         const bookInfo = {
             title,
             author,
@@ -22,21 +22,8 @@ const CreateBook = () => {
             description,
             availability
         }
-        fetch('http://localhost:5555/books', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(bookInfo)
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log('Server response: ', data);
-            navigate('/books');
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        postNewBook(bookInfo);
+        navigate('/books');
     }
 
     return (

@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import NavigateBack from "../components/NavigateBack";
 import InputForm from "../components/InputForm";
 import Spinner from '../components/Spinner';
+import { fetchABook } from '../services/api'; 
+import { editABook } from '../services/api';
 
 const EditBook = () => {
     const { id } = useParams();
@@ -15,24 +17,19 @@ const EditBook = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(true);
-        fetch(`http://localhost:5555/books/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-            const oneBook = data.book;
-            setTitle(oneBook.title);
-            setAuthor(oneBook.author);
-            setPublishYear(oneBook.publishYear);
-            setDescription(oneBook.description);
-            setAvailability(oneBook.availability);
+        const fetchData = async () => {
+            setLoading(true);
+            const data = await fetchABook(id);
+            setTitle(data.title);
+            setAuthor(data.author);
+            setPublishYear(data.publishYear);
+            setDescription(data.description);
+            setAvailability(data.availability);
             setTimeout(() => {
                 setLoading(false);
-            }, 1000)
-        })
-        .catch((err) => {
-            console.log(err);
-            setLoading(false);
-        })
+            }, 1000)    
+    }
+    fetchData();
     }, [id])
 
     function handleUpdate(e) {
@@ -44,22 +41,8 @@ const EditBook = () => {
             description,
             availability
         }
-
-        fetch(`http://localhost:5555/books/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(bookInfo)
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            navigate('/books')
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        editABook(id, bookInfo);
+        navigate('/books')
     }
   
     return (

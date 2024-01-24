@@ -3,6 +3,7 @@ import '../style.css';
 import { useParams } from 'react-router-dom';
 import NavigateBack from "../components/NavigateBack";
 import Spinner from '../components/Spinner';
+import { fetchABook } from '../services/api'; 
 
 const ShowBook = () => {
 
@@ -11,21 +12,15 @@ const ShowBook = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(true);
-        fetch(`http://localhost:5555/books/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-            const oneBook = data.book;
-            setBook(oneBook);
-            console.log(oneBook);
-                        setTimeout(() => {
-                setLoading(false);
-            }, 1000)
-        })
-        .catch((err) => {
-            console.log(err);
-            setLoading(false);
-        })
+        const fetchData = async () => {
+                setLoading(true);
+                const data = await fetchABook(id);
+                setBook(data);
+                setTimeout(() => {
+                    setLoading(false);
+                }, 1000)    
+        }
+        fetchData();
     }, [id])
 
     return (

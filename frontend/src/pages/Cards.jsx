@@ -1,26 +1,22 @@
 import { React, useEffect, useState } from "react";
 import NavigateBack from "../components/NavigateBack";
 import Spinner from '../components/Spinner';
+import { fetchAllTheBooks } from '../services/api';
 
 const Cards = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(true);
-        fetch('http://localhost:5555/books')
-        .then((res) => res.json())
-        .then((data) => {
-            const returnedData = data.data;
-            setBooks(returnedData);
+        const fetchData = async () => {
+            setLoading(true);
+            const data = await fetchAllTheBooks();
+            setBooks(data);
             setTimeout(() => {
                 setLoading(false);
             }, 1000)
-        })
-        .catch((err) => {
-            console.log(err);
-            setLoading(false);
-        })
+        }
+        fetchData();
     }, []);
 
     return (
@@ -29,7 +25,7 @@ const Cards = () => {
             <div className="main-cards-container">
                 {
                     loading ? ( <Spinner /> )
-                    : ( books.map((book) =>(
+                    : books.length > 0 ? ( books.map((book) =>(
                         <div className="each-card" key={book._id}>
                             <h3>
                                 {book.title}
@@ -48,6 +44,10 @@ const Cards = () => {
                              </div>
                         </div>
                     ))
+                ) : (
+                    <div className='no-books-cards'>
+                        <p>No Books Available</p>   
+                    </div>
                 )}
             </div>
         </div>

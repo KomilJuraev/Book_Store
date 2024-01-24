@@ -239,3 +239,14 @@ body {
   height: 40px;
   margin: 10px;
 }
+
+.no-books > p {
+  display: flex;
+  justify-content: center;
+}
+
+.no-books-cards {
+  width: 100vw; /* Set the width to 100% of the viewport width */
+  display: flex;
+  justify-content: center;
+}
