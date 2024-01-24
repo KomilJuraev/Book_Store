@@ -1,4 +1,12 @@
-let BASE_URL = "http://localhost:5555";
+let BASE_URL = "";
+
+if (process.env.NODE_ENV === "development") {
+    BASE_URL = "http://localhost:5555";
+  } else if (process.env.NODE_ENV === "production") {
+    BASE_URL = "https://mern-book-store-backend.onrender.com";
+  }
+
+
 
 //Get all the books from database
 export async function fetchAllTheBooks() {
