@@ -11,15 +11,17 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const fetchData = async () => {
+        // const fetchData = async () => {
             setLoading(true);
-            const data = await fetchAllTheBooks();
-            setBooks(data);
-            setTimeout(() => {
-                setLoading(false);
-            }, 1000)
-        }
-        fetchData();
+            fetchAllTheBooks()
+            .then((data) => {
+                setBooks(data);
+                setTimeout(() => {
+                    setLoading(false);
+                }, 1000)    
+            })
+        // }
+        // fetchData();
     }, []);
 
     return (
