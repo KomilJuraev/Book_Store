@@ -1,7 +1,3 @@
 # .gitignore
-
-# Ignore .env file in both backend and frontend
 **/.env
-
-# Ignore node_modules in both backend and frontend
 **/node_modules/
