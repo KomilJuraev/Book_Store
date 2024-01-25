@@ -22,7 +22,12 @@ const CreateBook = () => {
             description,
             availability
         }
-        postNewBook(bookInfo);
+        const data = postNewBook(bookInfo);
+        if(data.length > 0) {
+            console.log("Created book data", data);
+        } else {
+            console.log("No data", data);
+        }
         navigate('/books');
     }
 

@@ -15,8 +15,8 @@ function App() {
         <Route path='/' element={ <Main /> } />
         <Route path='/cards' element={ <Cards /> } />
         <Route path='/books' element={ <Home /> } />
-        <Route path='/books/details/:id' element={ <ShowBook /> } />
         <Route path='/books/create' element={ <CreateBook /> } />
+        <Route path='/books/details/:id' element={ <ShowBook /> } />
         <Route path='/books/edit/:id' element={ <EditBook /> } />
         <Route path='/books/delete/:id' element={ <DeleteBook /> } />
       </Routes>

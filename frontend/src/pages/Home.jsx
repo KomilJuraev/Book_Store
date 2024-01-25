@@ -38,7 +38,14 @@ const Home = () => {
                         </tr>
                     </thead>
                     <tbody className='book-table-body'>
-                        { loading ? ( <Spinner /> )
+                        { loading ?
+                        ( 
+                            <tr>
+                                <td colSpan="5" className='spinner-cell'>
+                                    <Spinner /> 
+                                </td>
+                            </tr>
+                        )
                             : books.length > 0 ? (
                             books.map((book) =>(
                             <tr key={book._id}>
@@ -66,7 +73,8 @@ const Home = () => {
                                 <td colSpan="5" className='no-books'>
                                   <p>No Books Available</p>
                                 </td>
-                              </tr>                                                      )}
+                              </tr>                                                      
+                            )}
                     </tbody>
                 </table>
             </div>
