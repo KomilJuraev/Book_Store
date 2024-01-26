@@ -50,7 +50,7 @@ const Home = () => {
                                     <Spinner /> 
                                 </td>
                             </tr>
-                        ) : books.length > 0 ? (
+                        ) : books && books.length > 0 ? (
                             books.map((book) =>(
                             <tr key={book._id}>
                                 <td>
