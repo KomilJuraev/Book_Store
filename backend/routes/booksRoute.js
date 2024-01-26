@@ -31,6 +31,7 @@ router.get('/', async (req, res) => {
         // Add Cache-Control header to disable caching
         res.setHeader('Cache-Control', 'no-store');
         const books = await Book.find({});
+        console.log('Database books', books);
         return res.status(200).json({
             count: books.length, 
             data: books

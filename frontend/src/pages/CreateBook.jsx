@@ -23,6 +23,7 @@ const CreateBook = () => {
             availability
         }
         const data = postNewBook(bookInfo);
+        console.log("Created book data", data);
         if(data.length > 0) {
             console.log("Created book data", data);
         } else {
