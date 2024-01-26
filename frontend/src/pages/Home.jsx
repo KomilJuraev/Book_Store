@@ -11,15 +11,18 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        // const fetchData = async () => {
+        const fetchData = async () => {
             setLoading(true);
-            fetchAllTheBooks()
-            .then((data) => {
+            try {
+                const data = await fetchAllTheBooks();
                 setBooks(data);
-                setLoading(false);
-            })
-        // }
-        // fetchData();
+            } catch(error) {
+                console.error('Error fetching data:', error);
+            } finally {
+                setLoading(false);   
+            }
+        }
+        fetchData();
     }, []);
 
     return (
