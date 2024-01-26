@@ -28,6 +28,8 @@ router.post('/', async (req, res) => {
 //Route to GET all Books from database
 router.get('/', async (req, res) => {
     try {
+        // Add Cache-Control header to disable caching
+        res.setHeader('Cache-Control', 'no-store');
         const books = await Book.find({});
         return res.status(200).json({
             count: books.length, 
