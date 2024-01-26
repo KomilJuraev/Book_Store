@@ -13,6 +13,7 @@ export async function fetchAllTheBooks() {
     try {
         const response = await fetch(`${BASE_URL}/books`);
         const data = await response.json();
+        console.log("Fetched data", data.data);
         return data.data;
     } catch(err) {
         console.log("Error fetching data:", err);

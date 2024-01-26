@@ -16,9 +16,7 @@ const Home = () => {
             fetchAllTheBooks()
             .then((data) => {
                 setBooks(data);
-                setTimeout(() => {
-                    setLoading(false);
-                }, 1000)    
+                setLoading(false);
             })
         // }
         // fetchData();
