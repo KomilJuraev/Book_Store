@@ -5,6 +5,7 @@ import { faCircleInfo, faPenToSquare, faTrashCan, faSquarePlus } from '@fortawes
 import NavigateBack from '../components/NavigateBack';
 import Spinner from '../components/Spinner';
 import { fetchAllTheBooks } from '../services/api';
+const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
 const Home = () => {
     const [books, setBooks] = useState([]);
@@ -15,7 +16,9 @@ const Home = () => {
             setLoading(true);
             try {
                 const data = await fetchAllTheBooks();
+                console.log('All the books', data);
                 setBooks(data);
+                forceUpdate();
             } catch(error) {
                 console.error('Error fetching data:', error);
             } finally {
