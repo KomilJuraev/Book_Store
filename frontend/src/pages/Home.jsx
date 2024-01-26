@@ -1,15 +1,15 @@
-import React, { useEffect, useState, useReducer } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo, faPenToSquare, faTrashCan, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 import NavigateBack from '../components/NavigateBack';
 import Spinner from '../components/Spinner';
 import { fetchAllTheBooks } from '../services/api';
+import { useBookContext } from '../context/BookContext';
 
 const Home = () => {
-    const [books, setBooks] = useState([]);
+    const {books, updateBooks} = useBookContext();
     const [loading, setLoading] = useState(false);
-    const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,8 +17,7 @@ const Home = () => {
             try {
                 const data = await fetchAllTheBooks();
                 console.log('All the books', data);
-                setBooks(data);
-                forceUpdate();
+                updateBooks(data);
             } catch(error) {
                 console.error('Error fetching data:', error);
             } finally {
@@ -26,7 +25,7 @@ const Home = () => {
             }
         }
         fetchData();
-    }, []);
+    }, [updateBooks]);
 
     return (
             <div>
@@ -51,8 +50,7 @@ const Home = () => {
                                     <Spinner /> 
                                 </td>
                             </tr>
-                        )
-                            : books.length > 0 ? (
+                        ) : books.length > 0 ? (
                             books.map((book) =>(
                             <tr key={book._id}>
                                 <td>
