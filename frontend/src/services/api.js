@@ -3,7 +3,7 @@ let BASE_URL = "";
 if (process.env.NODE_ENV === "development") {
     BASE_URL = "http://localhost:5555";
   } else if (process.env.NODE_ENV === "production") {
-    BASE_URL = process.env.REACT_APP_BASE_URL;
+    BASE_URL = "https://mern-book-store-backend.onrender.com";
   }
 
 
@@ -13,7 +13,6 @@ export async function fetchAllTheBooks() {
     try {
         const response = await fetch(`${BASE_URL}/books`);
         const data = await response.json();
-        console.log("Fetched data", data.data);
         return data.data;
     } catch(err) {
         console.log("Error fetching data:", err);
