@@ -23,7 +23,6 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
     console.log(req); 
-    return res.status(234).send('Welcome To MERN Stack Tutorial');
 });
 
 app.use('/books', booksRoute);
